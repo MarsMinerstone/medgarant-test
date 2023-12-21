@@ -7,7 +7,7 @@ busy = [
 	{'start': '18:40', 'stop': '18:50'},
 	{'start': '14:40', 'stop': '15:50'},
 	{'start': '16:20', 'stop': '17:20'},
-	{'start': '20:05', 'stop': '20:202'}
+	{'start': '20:05', 'stop': '20:20'}
 ]
 
 gap30 = timedelta(minutes=30)
@@ -17,6 +17,10 @@ def str_to_time(str_date: str) -> time:
 	return datetime.strptime(str_date, '%H:%M').time()
 
 
+def dtc(time: time) -> datetime:
+	return datetime.combine(datetime.min, time)
+
+
 def get_gaps(scheldue: List[Dict[str, str]]) -> List[Dict[str, time]]:
 	try:
 		list_of_times = sorted(
@@ -24,11 +28,14 @@ def get_gaps(scheldue: List[Dict[str, str]]) -> List[Dict[str, time]]:
 	except [TypeError, ValueError] as e:
 		raise e
 
+	list_of_times.insert(0, time(9, 0))
+	list_of_times.append(time(21, 0))
+
 	final_list = []
 
-	for i in range(1, len(list_of_times)-1, 2):
-		time_start = datetime.combine(datetime.min, list_of_times[i+1])
-		time_stop = datetime.combine(datetime.min, list_of_times[i])
+	for i in range(1, len(list_of_times), 2):
+		time_start = dtc(list_of_times[i])
+		time_stop = dtc(list_of_times[i-1])
 		td = time_start - time_stop
 
 		while td >= gap30:
