@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": "./"
+		}
+	],
+	"settings": 
+	{
+		"SublimeLinter.linters.flake8.executable": 
+			["/Users/ilya/.pyenv/shims/python", "-m", "flake8"],
+		"SublimeLinter.linters.mypy.executable": 
+			["/Users/ilya/Documents/GitHub/medgarant-test/env/bin/python", "-m", "mypy"]
+	},
+
+
+}

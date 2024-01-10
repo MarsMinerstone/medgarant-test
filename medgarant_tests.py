@@ -5,7 +5,7 @@ from medgarant import get_gaps
 
 
 class TestGetGaps(unittest.TestCase):
-    def test_get_gaps(self):
+    def test_get_gaps(self) -> None:
         busy = [
             {'start': '9:00', 'stop': '15:00'},
             {'start': '16:20', 'stop': '17:20'},
@@ -26,6 +26,8 @@ class TestGetGaps(unittest.TestCase):
         for gap, expected_gap in zip(gaps, expected_gaps):
             self.assertEqual(gap['start'], expected_gap['start'])
             self.assertEqual(gap['stop'], expected_gap['stop'])
+
+    # return "3"
 
 
 if __name__ == '__main__':
