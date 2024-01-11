@@ -25,3 +25,5 @@ jobs:
       run: flake8 .
     - name: Run mypy
       run: mypy .
+    - name: QAtestimg
+      run: python medgarant_tests.py
