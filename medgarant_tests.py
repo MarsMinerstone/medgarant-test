@@ -17,7 +17,7 @@ class TestGetGaps(unittest.TestCase):
             {'start': time(15, 30), 'stop': time(16, 00)},
             {'start': time(17, 20), 'stop': time(17, 50)},
             {'start': time(17, 50), 'stop': time(18, 20)},
-            {'start': time(18, 20), 'stop': time(19, 50)}
+            {'start': time(18, 20), 'stop': time(18, 50)}
         ]
 
         gaps = get_gaps(busy)
